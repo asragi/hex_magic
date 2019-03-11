@@ -16,7 +16,7 @@ public class HexMaster: MonoBehaviour
         hexCalc = new HexCalculator();
         var proguression = hexCalc.CalcProgression(0, 6, RingSize);
         var hexNum = proguression[proguression.Length - 1];
-        for (int i = 0; i < hexNum; i++)
+        for (int i = 0; i < hexNum + 1; i++)
         {
             var obj = Instantiate(HexObject, hexCalc.PositionFromIndex(i, center, 1, proguression), new Quaternion());
             obj.name = "obj"  + i;

@@ -14,8 +14,8 @@ public class HexCalculator
             {
                 return 0;
             }
-            var prevLast = prog[_group - 1];
-            var half = 1 + (prog[_group] + prevLast) / 2;
+            var prevLast = _prog[_group - 1];
+            var half = 1 + (_prog[_group] + prevLast) / 2;
             if (index == half)
             {
                 return 0;
@@ -31,11 +31,19 @@ public class HexCalculator
             {
                 if(index == prevLast + 2 + j)
                 {
-                    target -= diffLength  - j;
+                    target -= diffLength - j;
                 }
                 if (index == half - diffLength + j)
                 {
                     target -= j + 1;
+                }
+                if (index == half + 1 + j)
+                {
+                    target -= diffLength - j;
+                }
+                if (index == _prog[_group] - j)
+                {
+                    target -= diffLength - j;
                 }
             }
             if (half < index)
