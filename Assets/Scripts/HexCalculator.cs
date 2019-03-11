@@ -7,6 +7,20 @@ public class HexCalculator
 {
     public Vector3 PositionFromIndex(int i, Vector3 center, float distance, int[] prog)
     {
+        if (i == 0) return center;
+        var unitX = distance / 2 * Mathf.Sqrt(3);
+        var unitY = distance / 2;
+
+        // x計算
+        var group = RingGroupFromIndex(i, prog);
+        var coordinate = CalcCoordinate(i, prog);
+        var x = coordinate.x * unitX;
+        var y = coordinate.y * unitY;
+        return new Vector3(x, y, 0);
+    }
+
+    public RPoint CalcCoordinate(int i, int[] prog)
+    {
         int XCoordinateFromIndex(int index, int[] _prog, int _group)
         {
             // x is 0
@@ -29,7 +43,7 @@ public class HexCalculator
             var diffLength = _group - 1;
             for (int j = 0; j < diffLength; j++)
             {
-                if(index == prevLast + 2 + j)
+                if (index == prevLast + 2 + j)
                 {
                     target -= diffLength - j;
                 }
@@ -92,20 +106,8 @@ public class HexCalculator
             throw new ArgumentOutOfRangeException();
         }
 
-        if (i == 0) return center;
-        var unitX = distance / 2 * Mathf.Sqrt(3);
-        var unitY = distance / 2;
-
-        // x計算
         var group = RingGroupFromIndex(i, prog);
-        var x = XCoordinateFromIndex(i, prog, group) * unitX;
-        var y = YCoordinateFromIndex(i, prog, group) * unitY;
-        return new Vector3(x, y, 0);
-    }
-
-    public float GetDegreeFromIndex(int i)
-    {
-        return 0;
+        return new RPoint(XCoordinateFromIndex(i, prog, group), YCoordinateFromIndex(i, prog, group));
     }
 
     /// <summary>

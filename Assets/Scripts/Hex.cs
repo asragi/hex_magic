@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hex : MonoBehaviour
 {
     HexMaster master;
+    RPoint Point { get; set; }
     // Start is called before the first frame update
     void Start()
     {
