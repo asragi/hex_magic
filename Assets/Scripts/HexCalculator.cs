@@ -9,27 +9,49 @@ public class HexCalculator
     {
         int XCoordinateFromIndex(int index, int[] _prog, int _group)
         {
+            // x is 0
             if (index == 0)
             {
                 return 0;
             }
-            var half = (prog[_group] + prog[_group - 1]) / 2;
-            if ((index - 1) % half == 0)
+            var prevLast = prog[_group - 1];
+            var half = 1 + (prog[_group] + prevLast) / 2;
+            if (index == half)
             {
                 return 0;
             }
-            if (index == prog[_group - 1] + 1)
+            if (index == prevLast + 1)
             {
                 return 0;
-            } 
+            }
+            // x is not 0
             var target = _group;
+            var diffLength = _group - 1;
+            for (int j = 0; j < diffLength; j++)
+            {
+                if(index == prevLast + 2 + j)
+                {
+                    target -= diffLength  - j;
+                }
+                if (index == half - diffLength + j)
+                {
+                    target -= j + 1;
+                }
+            }
             if (half < index)
             {
                 target *= -1;
             }
-            Debug.Log($"{index}:{prog[_group - 1]}");
+            Debug.Log($"{index}:{half}");
             return target;
         }
+
+        int YCoordinateFromIndex()
+        {
+            return 0;
+        }
+
+
         if (i == 0) return center;
         var unitX = distance * Mathf.Sin(Mathf.PI/6);
 
