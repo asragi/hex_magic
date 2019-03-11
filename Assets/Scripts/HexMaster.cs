@@ -18,9 +18,9 @@ public class HexMaster: MonoBehaviour
         var hexNum = proguression[proguression.Length - 1];
         for (int i = 0; i < hexNum; i++)
         {
-            Instantiate(HexObject, hexCalc.PositionFromIndex(i, center, 1, proguression), new Quaternion());
+            var obj = Instantiate(HexObject, hexCalc.PositionFromIndex(i, center, 1, proguression), new Quaternion());
+            obj.name = "obj"  + i;
         }
-        Debug.Log(hexNum);
     }
 
     private void Update()
