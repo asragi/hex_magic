@@ -50,23 +50,30 @@ public class HexCalculator
             {
                 target *= -1;
             }
-            Debug.Log($"{index}:{half}");
             return target;
         }
 
-        int YCoordinateFromIndex()
+        int YCoordinateFromIndex(int index, int[] _prog, int _group)
         {
-            return 0;
+            if (index == 0) return 0;
+            var yMax = _group * 2;
+            var prevLast = _prog[_group - 1];
+            var half = 1 + (_prog[_group] + prevLast) / 2;
+            if (index == prevLast + 1) return yMax;
+            if (index == half) return -yMax;
+            return yMax / 2;
         }
 
 
         if (i == 0) return center;
         var unitX = distance * Mathf.Sin(Mathf.PI/6);
+        var unitY = distance / 2;
 
         // x計算
         var group = RingGroupFromIndex(i, prog);
-        var x = XCoordinateFromIndex(i, prog, group);
-        return new Vector3(x, 0, 0);
+        var x = XCoordinateFromIndex(i, prog, group) * unitX;
+        var y = YCoordinateFromIndex(i, prog, group) * unitY;
+        return new Vector3(x, y, 0);
     }
 
     public float GetDegreeFromIndex(int i)
