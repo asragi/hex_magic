@@ -24,7 +24,8 @@ public class HexCalculator
         var unitX = distance * Mathf.Sin(Mathf.PI/6);
 
         // x計算
-        var x = XCoordinateFromIndex(i, RingGroupFromIndex(i, prog));
+        var group = RingGroupFromIndex(i, prog);
+        var x = XCoordinateFromIndex(i, prog[group] - prog[group-1]);
         return new Vector3(x, 0, 0);
     }
 
