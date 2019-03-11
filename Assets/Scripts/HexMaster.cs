@@ -24,6 +24,7 @@ public class HexMaster: MonoBehaviour
             obj.name = "obj"  + i;
             obj.transform.SetParent(transform);
             hices[i] = obj.GetComponent<Hex>();
+            hices[i].Point = hexCalc.CalcCoordinate(i, proguression);
             hices[i].SetHexMaster(this);
         }
     }
