@@ -1,27 +1,51 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HexCalculator
 {
-    float radius;
-    Vector3 center;
-
-    public HexCalculator(float _radius, Vector3 _center)
+    public Vector3 PositionFromIndex(int i, Vector3 center, float distance, int[] prog)
     {
-        radius = _radius;
-        center = _center;
-    }
+        int XCoordinateFromIndex(int index, int ringLength)
+        {
+            if (index == 0)
+            {
+                return 0;
+            }
+            if ((i-1)%(ringLength/2) == 0)
+            {
+                return 0;
+            }
+            return 5;
 
-    public Vector3 PositionFromIndex(int i)
-    {
+        }
         if (i == 0) return center;
-        return Vector3.zero;
+        var unitX = distance * Mathf.Sin(Mathf.PI/6);
+
+        // x計算
+        var x = XCoordinateFromIndex(i, RingGroupFromIndex(i, prog));
+        return new Vector3(x, 0, 0);
     }
 
     public float GetDegreeFromIndex(int i)
     {
         return 0;
+    }
+
+    /// <summary>
+    /// indexからRingの何週目にあるかを返す．
+    /// </summary>
+    public int RingGroupFromIndex(int i, int[] progression)
+    {
+        for (int j = 0; j < progression.Length; j++)
+        {
+            if (progression[j] > i)
+            {
+                return j;
+            }
+        }
+        throw new ArgumentOutOfRangeException();
     }
 
     /// <summary>
