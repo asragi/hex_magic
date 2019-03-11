@@ -61,12 +61,39 @@ public class HexCalculator
             var half = 1 + (_prog[_group] + prevLast) / 2;
             if (index == prevLast + 1) return yMax;
             if (index == half) return -yMax;
-            return yMax / 2;
+            var searchLength = half - prevLast - 2;
+            if (index < half)
+            {
+                for (int j = 0; j < searchLength; j++)
+                {
+                    if (index == prevLast + 2 + j)
+                    {
+                        var target = yMax - (j + 1);
+                        if (index > prevLast + 1 + _group)
+                        {
+                            target -= Mathf.Min(_group, index - (prevLast + 1 + _group));
+                        }
+                        return target;
+                    }
+                }
+            }
+            for (int j = 0; j < searchLength; j++)
+            {
+                if (index == half + 1 + j)
+                {
+                    var target = -yMax + (j + 1);
+                    if (index > half + _group)
+                    {
+                        target += Mathf.Min(_group, index - (half + _group));
+                    }
+                    return target;
+                }
+            }
+            throw new ArgumentOutOfRangeException();
         }
 
-
         if (i == 0) return center;
-        var unitX = distance * Mathf.Sin(Mathf.PI/6);
+        var unitX = distance / 2 * Mathf.Sqrt(3);
         var unitY = distance / 2;
 
         // x計算
