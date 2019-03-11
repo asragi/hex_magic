@@ -6,6 +6,8 @@ public class Hex : MonoBehaviour
 {
     HexMaster master;
     public RPoint Point { get; set; }
+    Hex[] contacted;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,18 +22,30 @@ public class Hex : MonoBehaviour
 
     void OnMouseOver()
     {
-        Contacted();
+        for (int i = 0; i < contacted.Length; i++)
+        {
+            contacted[i]?.OnContacted();
+        }
     }
 
     private void OnMouseExit()
     {
-        GetComponent<Renderer>().material.color = Color.white;
+        for (int i = 0; i < contacted.Length; i++)
+        {
+            contacted[i]?.OnContactedExit();
+        }
     }
 
-    public void Contacted()
+    public void OnContacted()
     {
         GetComponent<Renderer>().material.color = Color.gray;
     }
 
+    public void OnContactedExit()
+    {
+        GetComponent<Renderer>().material.color = Color.white;
+    }
+
     public void SetHexMaster(HexMaster hm) => master = hm;
+    public void SetContacted(Hex[] hices) => contacted = hices;
 }
