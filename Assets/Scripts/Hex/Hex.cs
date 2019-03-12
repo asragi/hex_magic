@@ -31,12 +31,6 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
         hex2Img = GetComponent<Hex2Img>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void StartCountCheck(){
         contactCount = 0;
         ReactContact = false;
@@ -74,53 +68,31 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
         return false;
     }
 
-    void OnMouseEnter(){
-        master.ContactCheck();
-        Debug.Log(ContactCount);
-    }
-    void OnMouseOver()
-    {
-        OnContacted();
-        for (int i = 0; i < contacted.Length; i++)
-        {
-            contacted[i]?.OnContacted();
-        }
-    }
-
-    private void OnMouseExit()
-    {
-        OnContactedExit();
-        for (int i = 0; i < contacted.Length; i++)
-        {
-            contacted[i]?.OnContactedExit();
-        }
-    }
-
     public void OnContacted()
     {
-
+        image.color = Color.red;
     }
 
     public void OnContactedExit()
     {
-
+        image.color = Color.white;
     }
 
     public void SetHexMaster(HexMaster hm) => master = hm;
     public void SetContacted(Hex[] hices) => contacted = hices;
 
-        // オブジェクトの範囲内にマウスポインタが入った際に呼び出されます。
+    // オブジェクトの範囲内にマウスポインタが入った際に呼び出されます。
     // this method called by mouse-pointer enter the object.
     public void OnPointerEnter( PointerEventData eventData )
     {
-        image.color = Color.red;
+        master.PointerEnter(this);
     }
 
     // オブジェクトの範囲内からマウスポインタが出た際に呼び出されます。
     //
     public void OnPointerExit( PointerEventData eventData )
     {
-        image.color = Color.white;
+        master.PointerExit(this);
     }
 
     public void OnPointerDown(PointerEventData eventData)

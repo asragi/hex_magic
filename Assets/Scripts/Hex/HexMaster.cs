@@ -8,6 +8,7 @@ public class HexMaster: MonoBehaviour
     [SerializeField]
     GameObject HexObject;
 
+    Hex selectedHex;
     Hex[] hices;
     Hex[] contacted;
     HexCoordinate hexCoordinate;
@@ -41,6 +42,38 @@ public class HexMaster: MonoBehaviour
         }
 
         deck = GetComponent<DeckManager>();
+    }
+
+    public void Update(){
+        void DeleteShade(){
+            if(selectedHex == null) return;
+            var targetSub = hexCoordinate.TryGetHex(selectedHex.Point + deck.Target);
+            targetSub?.OnContactedExit();
+        }
+        void AddShade(){
+            if(selectedHex == null) return;
+            var targetSub = hexCoordinate.TryGetHex(selectedHex.Point + deck.Target);
+            targetSub?.OnContacted();
+        }
+        if(Input.GetKeyDown(KeyCode.Space)){
+            DeleteShade();
+            deck.ChangeTarget();
+            AddShade();
+        }
+    }
+
+    public void PointerEnter(Hex hex){
+        hex.OnContacted();
+        selectedHex = hex;
+        var targetSub = hexCoordinate.TryGetHex(hex.Point + deck.Target);
+        targetSub?.OnContacted();
+    }
+
+    public void PointerExit(Hex hex){
+        selectedHex = null;
+        hex.OnContactedExit();
+        var targetSub = hexCoordinate.TryGetHex(hex.Point + deck.Target);
+        targetSub?.OnContactedExit();
     }
 
     public void HexClicked(int index){

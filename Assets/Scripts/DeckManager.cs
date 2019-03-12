@@ -31,12 +31,6 @@ public class DeckManager : MonoBehaviour
         Pop();
     }
 
-    void Update(){
-        if(Input.GetKeyDown(KeyCode.Space)){
-            ChangeTarget();
-        }
-    }
-
     public void Pop(){
         NowPair = next.Pop();
         cursor.SetImages(NowPair);
