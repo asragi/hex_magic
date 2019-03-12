@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Cursor : MonoBehaviour
 {
+    const float XDiff = 60;
+    const float YDiff = 36;
     [SerializeField]
     GameObject nextBase;
     [SerializeField]
@@ -29,5 +31,12 @@ public class Cursor : MonoBehaviour
     public void SetImages(HexColorPair pair){
         mainImg.ChangeImage(pair.Main);
         subImg.ChangeImage(pair.Sub);
+    }
+
+    public void SetTargetPoint(RPoint point){
+        var x = point.x * XDiff;
+        var y = point.y * YDiff;
+        var z = nextSub.transform.localPosition.z;
+        nextSub.transform.localPosition = new Vector3(x, y, z);
     }
 }
