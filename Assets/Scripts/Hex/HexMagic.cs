@@ -12,7 +12,7 @@ public class HexMagic
     // Start is called before the first frame update
     void Start()
     {
-        HexColor = (HexColor)(Random.Range(0, 5));
+        HexColor = (HexColor)(Random.Range(0, 6));
     }
 
     // Update is called once per frame

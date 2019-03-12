@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class Hex : MonoBehaviour
+public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     HexMaster master;
     public RPoint Point { get; set; }
@@ -23,6 +24,7 @@ public class Hex : MonoBehaviour
     {
         hexMagic = new HexMagic();
         image = GetComponent<Image>();
+        image.alphaHitTestMinimumThreshold = 0.5f;
         image.sprite = sprites[(int)HexColor];
     }
 
@@ -83,4 +85,18 @@ public class Hex : MonoBehaviour
 
     public void SetHexMaster(HexMaster hm) => master = hm;
     public void SetContacted(Hex[] hices) => contacted = hices;
+
+        // オブジェクトの範囲内にマウスポインタが入った際に呼び出されます。
+    // this method called by mouse-pointer enter the object.
+    public void OnPointerEnter( PointerEventData eventData )
+    {
+        image.color = Color.red;
+    }
+
+    // オブジェクトの範囲内からマウスポインタが出た際に呼び出されます。
+    //
+    public void OnPointerExit( PointerEventData eventData )
+    {
+        image.color = Color.white;
+    }
 }
