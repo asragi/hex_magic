@@ -56,7 +56,7 @@ public class HexMaster: MonoBehaviour
         targetSub.SetHex(deck.NowPair.Sub);
         deck.Pop();
         // Chain Check
-        ChainNum = 0;
+        ChainNum = 1;
         ContactCheck();
     }
 
@@ -87,6 +87,7 @@ public class HexMaster: MonoBehaviour
         }
         if (vanishingSum > 0){
             // Chain
+            Debug.Log($"{ChainNum} Chain!");
             ChainNum++;
             ContactCheck();
         }else{
@@ -95,7 +96,9 @@ public class HexMaster: MonoBehaviour
             for (int i = 0; i < hices.Length; i++)
             {
                 if (hices[i].HexColor == HexColor.None) continue;
+                hices[i].Vanishing = false;
                 if (!hices[i].Vanished) continue;
+                hices[i].Vanished = false;
                 hices[i].SetHex(HexColor.None);
             }
         }

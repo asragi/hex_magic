@@ -39,7 +39,20 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
     public void StartCountCheck(){
         contactCount = 0;
         Count(ref contactCount);
-        if(contactCount >= 4) OnVanish();
+        if(contactCount >= VanishNum()) OnVanish();
+    }
+
+    private bool ContactVanished(){
+        for(int i=0; i<contacted.Length; ++i){
+            if(contacted[i] == null) continue;
+            if(contacted[i].Vanished) return true;
+        }
+        return false;
+    }
+
+    private int VanishNum() {
+        if (ContactVanished()) return 3;
+        return 4;
     }
 
     public void OnVanish(){
