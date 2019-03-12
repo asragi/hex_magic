@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hex : MonoBehaviour
 {
@@ -13,12 +14,16 @@ public class Hex : MonoBehaviour
     public bool Checked;
     private int contactCount;
     public int ContactCount => contactCount;
+    Image image;
+    [SerializeField]
+    Sprite[] sprites;
 
     // Start is called before the first frame update
     void Start()
     {
         hexMagic = new HexMagic();
-        GetComponent<Renderer>().material.color = hexMagic.HexColor.GetColor();
+        image = GetComponent<Image>();
+        image.sprite = sprites[(int)HexColor];
     }
 
     // Update is called once per frame
@@ -68,12 +73,12 @@ public class Hex : MonoBehaviour
 
     public void OnContacted()
     {
-        GetComponent<Renderer>().material.color = Color.magenta;
+
     }
 
     public void OnContactedExit()
     {
-        GetComponent<Renderer>().material.color = hexMagic.HexColor.GetColor();
+
     }
 
     public void SetHexMaster(HexMaster hm) => master = hm;
