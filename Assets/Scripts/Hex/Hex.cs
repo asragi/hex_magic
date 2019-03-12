@@ -18,6 +18,8 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
     Image image;
     public int ID {get; set;}
     Hex2Img hex2Img;
+    public bool Vanishing {get; set;} // 前の連鎖で消えたもの
+    public bool Vanished {get; set;} // 2つ以上前の連鎖で消えたもの
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,11 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
     public void StartCountCheck(){
         contactCount = 0;
         Count(ref contactCount);
+        if(contactCount >= 4) OnVanish();
+    }
+
+    public void OnVanish(){
+        Vanishing = true;
     }
 
     public void Count(ref int n)

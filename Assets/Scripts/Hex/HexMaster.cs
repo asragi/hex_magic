@@ -13,6 +13,7 @@ public class HexMaster: MonoBehaviour
     HexCoordinate hexCoordinate;
     HexCalculator hexCalc;
     DeckManager deck;
+    public int ChainNum {get; private set;}
 
     private void Start()
     {
@@ -46,12 +47,17 @@ public class HexMaster: MonoBehaviour
         // Check if placable
         var target = hices[index];
         var targetSub = hexCoordinate.TryGetHex(target.Point + deck.Target);
+        // Check
         if (targetSub == null) return;
         if (target.HexColor != HexColor.None) return;
         if (targetSub.HexColor != HexColor.None) return;
+        // Place
         target.SetHex(deck.NowPair.Main);
         targetSub.SetHex(deck.NowPair.Sub);
         deck.Pop();
+        // Chain Check
+        ChainNum = 0;
+        ContactCheck();
     }
 
     public void RefreshChecked(){
@@ -64,8 +70,34 @@ public class HexMaster: MonoBehaviour
     public void ContactCheck(){
         for (int i = 0; i < hices.Length; i++)
         {
+            if (hices[i].HexColor == HexColor.None) continue;
+            if (hices[i].Vanished) continue;
             RefreshChecked();
             hices[i].StartCountCheck();
+        }
+        // Vanishing Check
+        var vanishingSum = 0;
+        for (int i = 0; i < hices.Length; i++)
+        {
+            if (hices[i].HexColor == HexColor.None) continue;
+            if (!hices[i].Vanishing) continue;
+            vanishingSum++;
+            hices[i].Vanishing = false;
+            hices[i].Vanished = true;
+        }
+        if (vanishingSum > 0){
+            // Chain
+            ChainNum++;
+            ContactCheck();
+        }else{
+            // Chain end
+            // Elase Vanished Panel
+            for (int i = 0; i < hices.Length; i++)
+            {
+                if (hices[i].HexColor == HexColor.None) continue;
+                if (!hices[i].Vanished) continue;
+                hices[i].SetHex(HexColor.None);
+            }
         }
     }
 }
