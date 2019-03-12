@@ -42,7 +42,6 @@ public class Hex : MonoBehaviour
             if (contacted[i].Checked) continue;
             contacted[i].Count(ref n);
         }
-        Checked = false;
     }
 
     void OnMouseEnter(){

@@ -42,9 +42,17 @@ public class HexMaster: MonoBehaviour
 
     }
 
+    public void RefreshChecked(){
+        for (int i = 0; i < hices.Length; i++)
+        {
+            hices[i].Checked = false;
+        }
+    }
+
     public void ContactCheck(){
         for (int i = 0; i < hices.Length; i++)
         {
+            RefreshChecked();
             hices[i].StartCountCheck();
         }
     }
