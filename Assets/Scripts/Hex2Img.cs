@@ -21,7 +21,7 @@ public class Hex2Img : MonoBehaviour
 
     Sprite[] sprites;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         image = GetComponent<Image>();
         sprites = new Sprite[]{

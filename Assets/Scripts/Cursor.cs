@@ -15,8 +15,8 @@ public class Cursor : MonoBehaviour
     Hex2Img subImg;
 
     HexColorPair standBy;
-    // Start is called before the first frame update
-    void Start()
+
+    public void Init()
     {
         mainImg = nextBase.GetComponent<Hex2Img>();
         subImg = nextSub.GetComponent<Hex2Img>();

@@ -6,8 +6,9 @@ public class DeckManager : MonoBehaviour
 {
     [SerializeField]
     GameObject cursorObj;
+    [SerializeField]
+    HexNext next;
     Cursor cursor;
-    HexDeck deck;
     public HexColorPair NowPair {get; private set;}
     RPoint[] targetPoints = new RPoint[]{
         new RPoint(1, 1),
@@ -23,10 +24,11 @@ public class DeckManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        deck = new HexDeck();
         cursor = cursorObj.GetComponent<Cursor>();
-        deck.MakeDeck();
         Target = targetPoints[index];
+        next.Init();
+        cursor.Init();
+        Pop();
     }
 
     void Update(){
@@ -36,7 +38,7 @@ public class DeckManager : MonoBehaviour
     }
 
     public void Pop(){
-        NowPair = new HexColorPair(deck.Pop(), deck.Pop());
+        NowPair = next.Pop();
         cursor.SetImages(NowPair);
     }
 
