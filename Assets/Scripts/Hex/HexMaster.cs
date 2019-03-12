@@ -41,4 +41,11 @@ public class HexMaster: MonoBehaviour
     {
 
     }
+
+    public void ContactCheck(){
+        for (int i = 0; i < hices.Length; i++)
+        {
+            hices[i].StartCountCheck();
+        }
+    }
 }
