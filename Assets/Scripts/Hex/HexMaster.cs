@@ -87,12 +87,12 @@ public class HexMaster: MonoBehaviour
         }
         if (vanishingSum > 0){
             // Chain
-            Debug.Log($"{ChainNum} Chain!:{vanishingSum}");
+            // Debug.Log($"{ChainNum} Chain!:{vanishingSum}");
             if(vanishingSum < 3){
                 Debug.LogError("Chain Error");
             }
             for(int j=0; j<hices.Length; j++){
-                if(hices[j].Vanished) Debug.Log($"{j}:(React:{hices[j].ReactContact})");
+                // if(hices[j].Vanished) Debug.Log($"{j}:(React:{hices[j].ReactContact})");
             }
             ChainNum++;
             ContactCheck();
