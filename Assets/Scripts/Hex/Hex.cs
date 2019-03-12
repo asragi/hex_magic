@@ -20,6 +20,7 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
     Hex2Img hex2Img;
     public bool Vanishing {get; set;} // 前の連鎖で消えたもの
     public bool Vanished {get; set;} // 2つ以上前の連鎖で消えたもの
+    public bool ReactContact;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +39,31 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
 
     public void StartCountCheck(){
         contactCount = 0;
-        Count(ref contactCount);
+        ReactContact = false;
+        Count(ref contactCount, ref ReactContact);
         if(contactCount >= VanishNum()) OnVanish();
+    }
+
+    private int VanishNum() {
+        if (ReactContact) return 3;
+        return 4;
+    }
+
+    public void OnVanish(){
+        Vanishing = true;
+    }
+
+    public void Count(ref int n, ref bool contact)
+    {
+        n = n + 1;
+        Checked = true;
+        for (int i=0; i<contacted.Length; i++){
+            if (contacted[i] == null) continue;
+            if (contacted[i].HexColor != HexColor) continue;
+            contact = contact || ContactVanished();
+            if (contacted[i].Checked) continue;
+            contacted[i].Count(ref n, ref contact);
+        }
     }
 
     private bool ContactVanished(){
@@ -48,27 +72,6 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
             if(contacted[i].Vanished) return true;
         }
         return false;
-    }
-
-    private int VanishNum() {
-        if (ContactVanished()) return 3;
-        return 4;
-    }
-
-    public void OnVanish(){
-        Vanishing = true;
-    }
-
-    public void Count(ref int n)
-    {
-        n = n + 1;
-        Checked = true;
-        for (int i=0; i<contacted.Length; i++){
-            if (contacted[i] == null) continue;
-            if (contacted[i].HexColor != HexColor) continue;
-            if (contacted[i].Checked) continue;
-            contacted[i].Count(ref n);
-        }
     }
 
     void OnMouseEnter(){

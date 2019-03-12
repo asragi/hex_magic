@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Checked: 0
+  ReactContact: 0
 --- !u!114 &7187429468728824846
 MonoBehaviour:
   m_ObjectHideFlags: 0
