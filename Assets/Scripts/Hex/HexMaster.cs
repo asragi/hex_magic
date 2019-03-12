@@ -14,6 +14,7 @@ public class HexMaster: MonoBehaviour
     HexCoordinate hexCoordinate;
     HexCalculator hexCalc;
     DeckManager deck;
+    Score score;
     public int ChainNum {get; private set;}
 
     private void Start()
@@ -24,6 +25,7 @@ public class HexMaster: MonoBehaviour
         var proguression = hexCalc.CalcProgression(0, 6, RingSize);
         var hexNum = proguression[proguression.Length - 1] + 1;
         hices = new Hex[hexNum];
+        score = new Score();
         for (int i = 0; i < hexNum; i++)
         {
             var obj = Instantiate(HexObject, transform);
@@ -127,6 +129,7 @@ public class HexMaster: MonoBehaviour
             for(int j=0; j<hices.Length; j++){
                 // if(hices[j].Vanished) Debug.Log($"{j}:(React:{hices[j].ReactContact})");
             }
+            score.AddScore(vanishingSum, ChainNum);
             ChainNum++;
             ContactCheck();
         }else{
