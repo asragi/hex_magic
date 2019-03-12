@@ -44,6 +44,11 @@ public class HexMaster: MonoBehaviour
 
     public void HexClicked(int index){
         // Check if placable
+        var target = hices[index];
+        var targetSub = hexCoordinate.TryGetHex(target.Point + deck.Target);
+        if (targetSub == null) return;
+        if (target.HexColor != HexColor.None) return;
+        if (targetSub.HexColor != HexColor.None) return;
         deck.Pop();
     }
 

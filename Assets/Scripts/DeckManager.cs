@@ -8,7 +8,7 @@ public class DeckManager : MonoBehaviour
     GameObject cursorObj;
     Cursor cursor;
     HexDeck deck;
-    HexColorPair nowPair;
+    public HexColorPair NowPair {get; private set;}
     RPoint[] targetPoints = new RPoint[]{
         new RPoint(1, 1),
         new RPoint(0, 2),
@@ -26,6 +26,7 @@ public class DeckManager : MonoBehaviour
         deck = new HexDeck();
         cursor = cursorObj.GetComponent<Cursor>();
         deck.MakeDeck();
+        Target = targetPoints[index];
     }
 
     void Update(){
@@ -35,8 +36,8 @@ public class DeckManager : MonoBehaviour
     }
 
     public void Pop(){
-        nowPair = new HexColorPair(deck.Pop(), deck.Pop());
-        cursor.SetImages(nowPair);
+        NowPair = new HexColorPair(deck.Pop(), deck.Pop());
+        cursor.SetImages(NowPair);
     }
 
     public void ChangeTarget(bool right=true){
