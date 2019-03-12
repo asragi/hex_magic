@@ -49,6 +49,8 @@ public class HexMaster: MonoBehaviour
         if (targetSub == null) return;
         if (target.HexColor != HexColor.None) return;
         if (targetSub.HexColor != HexColor.None) return;
+        target.SetHex(deck.NowPair.Main);
+        targetSub.SetHex(deck.NowPair.Sub);
         deck.Pop();
     }
 

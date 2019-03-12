@@ -17,8 +17,7 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
     public int ContactCount => contactCount;
     Image image;
     public int ID {get; set;}
-    [SerializeField]
-    Sprite[] sprites;
+    Hex2Img hex2Img;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +25,7 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
         hexMagic = new HexMagic();
         image = GetComponent<Image>();
         image.alphaHitTestMinimumThreshold = 0.5f;
-        image.sprite = sprites[(int)HexColor];
+        hex2Img = GetComponent<Hex2Img>();
     }
 
     // Update is called once per frame
@@ -104,5 +103,10 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
     public void OnPointerDown(PointerEventData eventData)
     {
         master.HexClicked(ID);
+    }
+
+    public void SetHex(HexColor color){
+        hexMagic.HexColor = color;
+        hex2Img.ChangeImage(HexColor);
     }
 }
