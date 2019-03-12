@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 67654f59067524429b10ec1e59dd8504
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - spriteYellow: {fileID: 21300000, guid: 7c07c2660120f46428a8a07633f0a61a, type: 3}
+  - spriteBlue: {fileID: 21300000, guid: 9f07902ffd436014983c5551a70ceab8, type: 3}
+  - spritePurple: {fileID: 21300000, guid: 4f45e103d68fcba4d93d3201a3ce9fd6, type: 3}
+  - spriteBlack: {fileID: 21300000, guid: bb4ec908b62b1284f888191a01f3d1db, type: 3}
+  - spriteWhite: {fileID: 21300000, guid: d16e8fe390e91f94ea9c5078df40193d, type: 3}
+  - spriteBlank: {fileID: 21300000, guid: 4b83dfe4ae42754409ac5fcac5f8cff5, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
