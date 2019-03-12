@@ -15,7 +15,7 @@ public class HexDeck
     public void MakeDeck(){
         var colorNum = (int)HexColor.size;
         for (int i=0; i<hexDeck.Length; ++i){
-            hexDeck[i] = (HexColor)Random.Range(0, colorNum);
+            hexDeck[i] = (HexColor)Random.Range(1, colorNum);
         }
     }
 

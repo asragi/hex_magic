@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     HexMaster master;
     public RPoint Point { get; set; }
@@ -16,6 +16,7 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private int contactCount;
     public int ContactCount => contactCount;
     Image image;
+    public int ID {get; set;}
     [SerializeField]
     Sprite[] sprites;
 
@@ -98,5 +99,10 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerExit( PointerEventData eventData )
     {
         image.color = Color.white;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        master.HexClicked(ID);
     }
 }

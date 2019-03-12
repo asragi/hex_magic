@@ -686,6 +686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2132348750}
   - component: {fileID: 2132348751}
+  - component: {fileID: 2132348752}
   m_Layer: 5
   m_Name: HexMaster
   m_TagString: Untagged
@@ -726,3 +727,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HexObject: {fileID: 7238606671346285017, guid: adce29ca78bd34c09b3b4e859ac8c75a,
     type: 3}
+--- !u!114 &2132348752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132348749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5366a6be0694e6fafb58bb5cd6d9b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorObj: {fileID: 1174355413}

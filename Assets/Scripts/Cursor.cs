@@ -9,18 +9,25 @@ public class Cursor : MonoBehaviour
     GameObject nextBase;
     [SerializeField]
     GameObject nextSub;
+    Hex2Img mainImg;
+    Hex2Img subImg;
 
     HexColorPair standBy;
     // Start is called before the first frame update
     void Start()
     {
-        standBy = new HexColorPair(HexColor.Blue, HexColor.White);
-        nextBase.GetComponent<Hex2Img>().ChangeImage(standBy.Main);
+        mainImg = nextBase.GetComponent<Hex2Img>();
+        subImg = nextSub.GetComponent<Hex2Img>();
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position = Input.mousePosition;
+    }
+
+    public void SetImages(HexColorPair pair){
+        mainImg.ChangeImage(pair.Main);
+        subImg.ChangeImage(pair.Sub);
     }
 }

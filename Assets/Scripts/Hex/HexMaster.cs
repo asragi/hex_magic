@@ -12,6 +12,7 @@ public class HexMaster: MonoBehaviour
     Hex[] contacted;
     HexCoordinate hexCoordinate;
     HexCalculator hexCalc;
+    DeckManager deck;
 
     private void Start()
     {
@@ -30,17 +31,20 @@ public class HexMaster: MonoBehaviour
             hices[i] = obj.GetComponent<Hex>();
             hices[i].Point = hexCalc.CalcCoordinate(i, proguression);
             hices[i].SetHexMaster(this);
+            hices[i].ID = i;
             hexCoordinate.SetHex(hices[i]);
         }
         for (int i = 0; i < hexNum; i++)
         {
             hices[i].SetContacted(hexCoordinate.GetContactedHex(hices[i].Point));
         }
+
+        deck = GetComponent<DeckManager>();
     }
 
-    private void Update()
-    {
-
+    public void HexClicked(int index){
+        // Check if placable
+        deck.Pop();
     }
 
     public void RefreshChecked(){
