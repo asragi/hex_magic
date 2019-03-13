@@ -6,6 +6,9 @@ using UnityEngine.EventSystems;
 
 public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
+    [SerializeField]
+    ParticleSystem particle;
+
     HexMaster master;
     public RPoint Point { get; set; }
     Hex[] contacted;
@@ -45,10 +48,7 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
 
     public void OnVanish(){
         Vanishing = true;
-    }
-
-    public void StartVanish(){
-
+        particle.Play();
     }
 
     public void Count(ref int n, ref bool contact)

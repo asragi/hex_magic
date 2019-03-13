@@ -25,7 +25,9 @@ public class Cursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Input.mousePosition;
+        var tmp = Input.mousePosition;
+        tmp.z = 0;
+        transform.position = tmp;
     }
 
     public void SetImages(HexColorPair pair){
