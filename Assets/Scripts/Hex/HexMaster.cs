@@ -46,7 +46,7 @@ public class HexMaster: MonoBehaviour
         deck = GetComponent<DeckManager>();
     }
 
-    public void Update(){
+    public void RotateInput(bool right){
         void DeleteShade(){
             if(selectedHex == null) return;
             var targetSub = hexCoordinate.TryGetHex(selectedHex.Point + deck.Target);
@@ -57,11 +57,9 @@ public class HexMaster: MonoBehaviour
             var targetSub = hexCoordinate.TryGetHex(selectedHex.Point + deck.Target);
             targetSub?.OnContacted();
         }
-        if(Input.GetKeyDown(KeyCode.Space)){
-            DeleteShade();
-            deck.ChangeTarget();
-            AddShade();
-        }
+        DeleteShade();
+        deck.ChangeTarget(right);
+        AddShade();
     }
 
     public void PointerEnter(Hex hex){
