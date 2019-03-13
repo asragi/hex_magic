@@ -5,6 +5,8 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     [SerializeField]
+    GameMaster master;
+    [SerializeField]
     HexMaster hexMaster;
     // Start is called before the first frame update
     void Start()
@@ -15,11 +17,15 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q)){
-            hexMaster.RotateInput(false);
+        void InputKey(){
+            if(master.PuzzleState != PuzzleState.Play) return;
+            if(Input.GetKeyDown(KeyCode.Q)){
+                hexMaster.RotateInput(false);
+            }
+            if(Input.GetKeyDown(KeyCode.E)){
+                hexMaster.RotateInput(true);
+            }
         }
-        if(Input.GetKeyDown(KeyCode.E)){
-            hexMaster.RotateInput(true);
-        }
+        InputKey();
     }
 }

@@ -1481,6 +1481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71634f7b6bd6e4056936e268aa179c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  master: {fileID: 2063926317}
   hexMaster: {fileID: 2132348751}
 --- !u!114 &2063926317
 MonoBehaviour:

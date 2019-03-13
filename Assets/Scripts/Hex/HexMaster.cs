@@ -77,6 +77,7 @@ public class HexMaster: MonoBehaviour
     }
 
     public void HexClicked(int index){
+        if (gameMaster.PuzzleState != PuzzleState.Play) return;
         // Check if placable
         var target = hices[index];
         var targetSub = hexCoordinate.TryGetHex(target.Point + deck.Target);
