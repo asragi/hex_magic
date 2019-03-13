@@ -12,7 +12,7 @@ public class ScoreBoard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetScore(50000);
+        SetScore(0);
     }
 
     void UpdateNumber(){
@@ -24,7 +24,7 @@ public class ScoreBoard : MonoBehaviour
         scoreToDisplay += 87;
     }
 
-    void SetScore(int val){
+    public void SetScore(int val){
         score = val;
     }
 
