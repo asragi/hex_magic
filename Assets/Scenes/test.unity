@@ -142,7 +142,7 @@ RectTransform:
   - {fileID: 1201317352}
   - {fileID: 485609672}
   m_Father: {fileID: 2063926315}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -725,7 +725,7 @@ RectTransform:
   m_Children:
   - {fileID: 1651526949}
   m_Father: {fileID: 2063926315}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -920,7 +920,7 @@ MonoBehaviour:
   spritePurple: {fileID: 21300000, guid: 4f45e103d68fcba4d93d3201a3ce9fd6, type: 3}
   spriteBlack: {fileID: 21300000, guid: bb4ec908b62b1284f888191a01f3d1db, type: 3}
   spriteWhite: {fileID: 21300000, guid: d16e8fe390e91f94ea9c5078df40193d, type: 3}
-  spriteBlank: {fileID: 21300000, guid: 4b83dfe4ae42754409ac5fcac5f8cff5, type: 3}
+  spriteBlank: {fileID: 21300000, guid: 856bdbaa5909c43cd98e85744ecd88db, type: 3}
 --- !u!114 &1488547637 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7273978770925696463, guid: 3859ad628aaf54663a495fb9074446c3,
@@ -951,7 +951,7 @@ GameObject:
   - component: {fileID: 1615474346}
   - component: {fileID: 1615474345}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1106,7 +1106,7 @@ MonoBehaviour:
   spritePurple: {fileID: 21300000, guid: 4f45e103d68fcba4d93d3201a3ce9fd6, type: 3}
   spriteBlack: {fileID: 21300000, guid: bb4ec908b62b1284f888191a01f3d1db, type: 3}
   spriteWhite: {fileID: 21300000, guid: d16e8fe390e91f94ea9c5078df40193d, type: 3}
-  spriteBlank: {fileID: 21300000, guid: 4b83dfe4ae42754409ac5fcac5f8cff5, type: 3}
+  spriteBlank: {fileID: 21300000, guid: 856bdbaa5909c43cd98e85744ecd88db, type: 3}
 --- !u!1 &1741319754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,7 +1139,7 @@ RectTransform:
   m_Children:
   - {fileID: 610187605}
   m_Father: {fileID: 2063926315}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1287,7 +1287,7 @@ GameObject:
   - component: {fileID: 1964320183}
   - component: {fileID: 1964320182}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: CenterImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1305,7 +1305,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2063926315}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1332,7 +1332,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 5575f9978193f43c88b8608fcbf303e7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1441,11 +1441,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1615474344}
+  - {fileID: 1964320181}
   - {fileID: 1741319755}
   - {fileID: 2132348750}
   - {fileID: 1174355414}
   - {fileID: 50740411}
-  - {fileID: 1964320181}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1497,7 +1497,7 @@ RectTransform:
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 2063926315}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
