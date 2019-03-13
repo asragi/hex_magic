@@ -18,6 +18,7 @@ public class HexMaster: MonoBehaviour
     DeckManager deck;
     public int ChainNum {get; private set;}
     HexPerform perform;
+    HexShake shake;
 
     private void Start()
     {
@@ -28,6 +29,7 @@ public class HexMaster: MonoBehaviour
         var hexNum = proguression[proguression.Length - 1] + 1;
         hices = new Hex[hexNum];
         perform = new HexPerform(this);
+        shake = GetComponent<HexShake>();
         for (int i = 0; i < hexNum; i++)
         {
             var obj = Instantiate(HexObject, transform);
@@ -135,6 +137,7 @@ public class HexMaster: MonoBehaviour
                 // if(hices[j].Vanished) Debug.Log($"{j}:(React:{hices[j].ReactContact})");
             }
             gameMaster.AddScore(vanishingSum, ChainNum);
+            shake.ShakeByChain(ChainNum);
             ChainNum++;
             // ContactCheck();
             perform.InitWait();
