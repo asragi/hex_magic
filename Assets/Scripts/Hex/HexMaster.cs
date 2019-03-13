@@ -30,7 +30,7 @@ public class HexMaster: MonoBehaviour
         {
             var obj = Instantiate(HexObject, transform);
             obj.name = "obj"  + i;
-            obj.transform.localPosition = hexCalc.PositionFromIndex(i, center, 88, proguression);
+            obj.transform.localPosition = hexCalc.PositionFromIndex(i, center, 87, proguression);
             // obj.transform.SetParent(transform);
             hices[i] = obj.GetComponent<Hex>();
             hices[i].Point = hexCalc.CalcCoordinate(i, proguression);
