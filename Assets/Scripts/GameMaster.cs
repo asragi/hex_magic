@@ -6,13 +6,13 @@ public class GameMaster : MonoBehaviour
 {
     [SerializeField]
     ScoreBoard scoreBoard;
-    public PuzzleState PuzzleState {get; private set;}
+    public PuzzleState PuzzleState {get; set;}
     Score score;
     // Start is called before the first frame update
     void Start()
     {
         score = new Score();
-        PuzzleState = PuzzleState.Opening;
+        PuzzleState = PuzzleState.Play;
     }
 
     // Update is called once per frame

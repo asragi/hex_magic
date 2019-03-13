@@ -17,6 +17,7 @@ public class HexMaster: MonoBehaviour
     HexCalculator hexCalc;
     DeckManager deck;
     public int ChainNum {get; private set;}
+    HexPerform perform;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class HexMaster: MonoBehaviour
         var proguression = hexCalc.CalcProgression(0, 6, RingSize);
         var hexNum = proguression[proguression.Length - 1] + 1;
         hices = new Hex[hexNum];
+        perform = new HexPerform(this);
         for (int i = 0; i < hexNum; i++)
         {
             var obj = Instantiate(HexObject, transform);
@@ -44,6 +46,10 @@ public class HexMaster: MonoBehaviour
         }
 
         deck = GetComponent<DeckManager>();
+    }
+
+    private void Update(){
+        perform.Update();
     }
 
     public void RotateInput(bool right){
@@ -130,7 +136,9 @@ public class HexMaster: MonoBehaviour
             }
             gameMaster.AddScore(vanishingSum, ChainNum);
             ChainNum++;
-            ContactCheck();
+            // ContactCheck();
+            perform.InitWait();
+            gameMaster.PuzzleState = PuzzleState.Effect;
         }else{
             // Chain end
             // Elase Vanished Panel
@@ -142,6 +150,7 @@ public class HexMaster: MonoBehaviour
                 hices[i].Vanished = false;
                 hices[i].SetHex(HexColor.None);
             }
+            gameMaster.PuzzleState = PuzzleState.Play;
         }
     }
 }

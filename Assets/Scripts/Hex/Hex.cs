@@ -47,6 +47,10 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
         Vanishing = true;
     }
 
+    public void StartVanish(){
+
+    }
+
     public void Count(ref int n, ref bool contact)
     {
         n = n + 1;
