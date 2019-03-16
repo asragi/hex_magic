@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class ScoreMission : MissionBase
 {
-    public override void DecideMission(int lv){
+    readonly int[] normArray = new int[]{
+        1500,
+        7000,
+        10000,
+        20000,
+        25000,
+        50000,
+        60000,
+        80000,
+        100000
+    };
 
+    int nowNorm;
+    int scoreSum;
+    public override void DecideMission(int lv){
+        var target = Mathf.Min(lv, normArray.Length) - 1;
+        nowNorm = normArray[target];
+        scoreSum = 0;
     }
 
     public override string GetText(){
-        return "Score Mission";
+        return $"Get {nowNorm} Point!";
     }
 
     public override bool CheckClear(ScoreStruct getScore){
-        return true;
+        scoreSum += getScore.GainScore;
+        if (scoreSum >= nowNorm){
+            return true;
+        }
+        return false;
     }
 }

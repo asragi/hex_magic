@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class SameMission : MissionBase
 {
+    int nowNorm;
     public override void DecideMission(int lv){
-
+        nowNorm = lv + 4;
     }
 
     public override string GetText(){
-        return "Same Mission";
+        return $"Erase {nowNorm} Panels at the same time!";
     }
 
     public override bool CheckClear(ScoreStruct getScore){
-        return true;
+        if (getScore.DeleteNum >= nowNorm) return true;
+        return false;
     }
 }
