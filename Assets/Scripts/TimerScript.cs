@@ -38,10 +38,22 @@ public class TimerScript : MonoBehaviour
     void Update()
     {
         void UpdateTime(){
+            void CheckEnd(){
+                if (leftFrame <= 0){
+                    leftFrame = 0;
+                    OnEnd();
+                }
+            }
+
             if(!Started) return;
             leftFrame--;
+            CheckEnd();
             UpdateTimeDisplay();
         }
         UpdateTime();
+    }
+
+    private void OnEnd(){
+
     }
 }
