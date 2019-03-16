@@ -69,9 +69,10 @@ public class MissionManager
         newMission.Activate();
     }
 
-    public void MissionCheck(ScoreStruct score){
+    public bool MissionCheck(ScoreStruct score){
         var toNext = nowMissions[0].CheckClear(score);
         if(toNext) Pop();
+        return toNext;
     }
 
     public MissionBase GetMission(int index) => nowMissions[index];

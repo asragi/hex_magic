@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HexPerform
 {
-    const int WaitFrame = 40;
+    public static int WaitFrame = 40;
     HexMaster master;
     int performFrame;
 
