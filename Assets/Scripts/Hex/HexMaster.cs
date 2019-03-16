@@ -22,6 +22,10 @@ public class HexMaster: MonoBehaviour
     HexPerform perform;
     HexShake shake;
 
+    // Mission
+    [SerializeField]
+    MissionBoardMaster missionBoardMaster;
+
     private void Start()
     {
         var center = Vector3.zero;
@@ -142,7 +146,8 @@ public class HexMaster: MonoBehaviour
             earnedScore.PopUp(ChainNum, vanishingSum, addScore);
             shake.ShakeByChain(ChainNum);
             ChainNum++;
-            // ContactCheck();
+            var scoreStruct = new ScoreStruct(vanishingSum, ChainNum, addScore);
+            missionBoardMaster.MissionCheck(scoreStruct);
             perform.InitWait();
             gameMaster.PuzzleState = PuzzleState.Effect;
         }else{
