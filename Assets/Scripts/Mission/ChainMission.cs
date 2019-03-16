@@ -9,7 +9,7 @@ public class ChainMission : MissionBase
     }
 
     public override string GetText(){
-        return "hoge";
+        return "Chain Mission";
     }
 
     public override bool CheckClear(ScoreStruct getScore){

@@ -12,7 +12,7 @@ public class MissionBoardMaster : MonoBehaviour
     {
         missionManager = new MissionManager();
         boards[0].UpdateContent(missionManager.GetMission(0));
-        // boards[1].UpdateContent(missionManager.GetMission(1));
+        boards[1].UpdateContent(missionManager.GetMission(1));
     }
 
     public void MissionCheck(ScoreStruct score){

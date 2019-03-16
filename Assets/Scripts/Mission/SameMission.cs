@@ -9,7 +9,7 @@ public class SameMission : MissionBase
     }
 
     public override string GetText(){
-        return "hoge";
+        return "Same Mission";
     }
 
     public override bool CheckClear(ScoreStruct getScore){
