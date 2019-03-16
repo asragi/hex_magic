@@ -9,6 +9,8 @@ public class HexMaster: MonoBehaviour
     GameObject HexObject;
     [SerializeField]
     GameMaster gameMaster;
+    [SerializeField]
+    EarnedScore earnedScore;
 
     Hex selectedHex;
     Hex[] hices;
@@ -136,7 +138,8 @@ public class HexMaster: MonoBehaviour
             for(int j=0; j<hices.Length; j++){
                 // if(hices[j].Vanished) Debug.Log($"{j}:(React:{hices[j].ReactContact})");
             }
-            gameMaster.AddScore(vanishingSum, ChainNum);
+            var addScore = gameMaster.AddScore(vanishingSum, ChainNum);
+            earnedScore.PopUp(ChainNum, vanishingSum, addScore);
             shake.ShakeByChain(ChainNum);
             ChainNum++;
             // ContactCheck();

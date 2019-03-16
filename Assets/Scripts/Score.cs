@@ -10,10 +10,10 @@ public class Score
         calc = new ScoreCalc();
     }
 
-    public void AddScore(int deleteNum, int chainNum){
+    public int AddScore(int deleteNum, int chainNum){
         var add = calc.Score(deleteNum, chainNum);
         Val += add;
         Debug.Log($"Score{Val}:{add}");
-
+        return add;
     }
 }

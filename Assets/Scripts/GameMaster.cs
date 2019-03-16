@@ -21,8 +21,9 @@ public class GameMaster : MonoBehaviour
 
     }
 
-    public void AddScore(int deleteNum, int chainNum){
-        score.AddScore(deleteNum, chainNum);
+    public int AddScore(int deleteNum, int chainNum){
+        var val = score.AddScore(deleteNum, chainNum);
         scoreBoard.SetScore(score.Val);
+        return val;
     }
 }
