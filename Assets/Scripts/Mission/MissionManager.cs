@@ -73,4 +73,6 @@ public class MissionManager
         var toNext = nowMissions[0].CheckClear(score);
         if(toNext) Pop();
     }
+
+    public MissionBase GetMission(int index) => nowMissions[index];
 }

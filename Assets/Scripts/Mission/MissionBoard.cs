@@ -1,18 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MissionBoard : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    Text message;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void UpdateContent(MissionBase mission){
+        message.text = mission.GetText();
     }
 }

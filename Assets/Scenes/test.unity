@@ -1903,6 +1903,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa47ad8236894d81a84a74764766ca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1488547637 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7273978770925696463, guid: 3859ad628aaf54663a495fb9074446c3,
@@ -2197,6 +2201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1791151021}
+  - component: {fileID: 1791151022}
   m_Layer: 5
   m_Name: ChallengeBoard
   m_TagString: Untagged
@@ -2226,6 +2231,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 180}
   m_SizeDelta: {x: 590, y: 330}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1791151022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791151020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6623aa4bf59d45458552979c495068f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: {fileID: 1091189539}
 --- !u!1 &1822588975
 GameObject:
   m_ObjectHideFlags: 0
