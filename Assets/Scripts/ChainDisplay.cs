@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ChainDisplay : MonoBehaviour
 {
-    const int AnimationFrame = 30;
+    const int AnimationFrame = 20;
     const int DurationAfterAnimation = 15;
     const float AnimDistance = 120;
     [SerializeField]
