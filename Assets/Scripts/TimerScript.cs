@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TimerScript : MonoBehaviour
 {
-    const int InitTimeSeconds = 2;
+    const int InitTimeSeconds = 30;
     const int FrameRate = 50;
     [SerializeField]
     Text intText;
