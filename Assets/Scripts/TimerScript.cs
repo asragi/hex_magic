@@ -18,8 +18,12 @@ public class TimerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Started = true;
         leftFrame = 60 * InitTimeSeconds;
+    }
+
+    public void GameStart()
+    {
+        Started = true;
     }
 
     private void UpdateTimeDisplay(){

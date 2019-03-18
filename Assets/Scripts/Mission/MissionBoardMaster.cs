@@ -22,9 +22,10 @@ public class MissionBoardMaster : MonoBehaviour
         initPos[1] = boards[1].transform.localPosition;
     }
 
-    public void MissionCheck(ScoreStruct score){
+    public bool MissionCheck(ScoreStruct score){
         var cleared = missionManager.MissionCheck(score);
         if(cleared) UpdateContent();
+        return cleared;
     }
 
     private void UpdateContent(){

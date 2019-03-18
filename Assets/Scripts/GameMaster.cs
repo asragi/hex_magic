@@ -6,6 +6,9 @@ public class GameMaster : MonoBehaviour
 {
     [SerializeField]
     ScoreBoard scoreBoard;
+    [SerializeField]
+    TimerScript timer;
+
     public PuzzleState PuzzleState {get; set;}
     Score score;
     // Start is called before the first frame update
@@ -18,12 +21,20 @@ public class GameMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            timer.GameStart();
+        }
     }
 
     public int AddScore(int deleteNum, int chainNum){
         var val = score.AddScore(deleteNum, chainNum);
         scoreBoard.SetScore(score.Val);
         return val;
+    }
+
+    public void AddTime()
+    {
+        timer.AddTime(10);
     }
 }

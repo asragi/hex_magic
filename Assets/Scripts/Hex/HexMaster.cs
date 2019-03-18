@@ -147,7 +147,8 @@ public class HexMaster: MonoBehaviour
             shake.ShakeByChain(ChainNum);
             ChainNum++;
             var scoreStruct = new ScoreStruct(vanishingSum, ChainNum - 1, addScore);
-            missionBoardMaster.MissionCheck(scoreStruct);
+            var cleard = missionBoardMaster.MissionCheck(scoreStruct);
+            if (cleard) gameMaster.AddTime();
             perform.InitWait();
             gameMaster.PuzzleState = PuzzleState.Effect;
         }else{
