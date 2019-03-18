@@ -6,6 +6,8 @@ public class MissionBoardMaster : MonoBehaviour
 {
     [SerializeField]
     MissionBoard[]  boards;
+    [SerializeField]
+    ParticleSystem clearParticle;
     MissionManager missionManager;
     IndexCounter index;
     Vector3[] initPos;
@@ -24,7 +26,10 @@ public class MissionBoardMaster : MonoBehaviour
 
     public bool MissionCheck(ScoreStruct score){
         var cleared = missionManager.MissionCheck(score);
-        if(cleared) UpdateContent();
+        if(cleared) {
+            UpdateContent();
+            clearParticle.Play();
+        }
         return cleared;
     }
 

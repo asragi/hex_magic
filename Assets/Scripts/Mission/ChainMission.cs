@@ -12,7 +12,7 @@ public class ChainMission : MissionBase
     }
 
     public override string GetText(){
-        return $"Make {nowNorm} Chain!";
+        return $"{nowNorm}連鎖せよ！";
     }
 
     public override bool CheckClear(ScoreStruct getScore){

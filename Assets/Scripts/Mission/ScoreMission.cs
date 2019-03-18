@@ -25,7 +25,7 @@ public class ScoreMission : MissionBase
     }
 
     public override string GetText(){
-        return $"Get {nowNorm} Point!";
+        return $"計{nowNorm}点獲得せよ！";
     }
 
     public override bool CheckClear(ScoreStruct getScore){

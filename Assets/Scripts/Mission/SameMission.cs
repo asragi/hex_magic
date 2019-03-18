@@ -10,7 +10,7 @@ public class SameMission : MissionBase
     }
 
     public override string GetText(){
-        return $"Erase {nowNorm} Panels at the same time!";
+        return $"{nowNorm}パネル同時に消せ！";
     }
 
     public override bool CheckClear(ScoreStruct getScore){
