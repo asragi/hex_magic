@@ -6905,7 +6905,7 @@ GameObject:
   - component: {fileID: 1482886356}
   - component: {fileID: 1482886357}
   m_Layer: 5
-  m_Name: ChallengeBoardRename
+  m_Name: ChallengeBoardList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

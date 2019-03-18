@@ -33,6 +33,9 @@ public class GameMaster : MonoBehaviour
         return val;
     }
 
+    public void StopTimer() => timer.StopTimer();
+    public void StartTimer() => timer.StartTimer();
+
     public void AddTime()
     {
         timer.AddTime(20);

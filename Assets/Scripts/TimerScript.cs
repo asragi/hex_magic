@@ -19,6 +19,7 @@ public class TimerScript : MonoBehaviour
     int leftFrame;
     int leftSeconds;
     int leftMilsec;
+    bool stopped;
 
     // Start is called before the first frame update
     void Start()
@@ -55,12 +56,15 @@ public class TimerScript : MonoBehaviour
             }
 
             if(!Started) return;
-            leftFrame--;
+            if(!stopped) leftFrame--;
             CheckEnd();
             UpdateTimeDisplay();
         }
         UpdateTime();
     }
+
+    public void StopTimer() => stopped = true;
+    public void StartTimer() => stopped = false;
 
     public void AddTime(int sec){
         leftFrame += sec * FrameRate;

@@ -151,6 +151,7 @@ public class HexMaster: MonoBehaviour
             if (cleard) gameMaster.AddTime();
             perform.InitWait();
             gameMaster.PuzzleState = PuzzleState.Effect;
+            gameMaster.StopTimer();
         }else{
             // Chain end
             // Elase Vanished Panel
@@ -163,6 +164,7 @@ public class HexMaster: MonoBehaviour
                 hices[i].SetHex(HexColor.None);
             }
             gameMaster.PuzzleState = PuzzleState.Play;
+            gameMaster.StartTimer();
         }
     }
 }
