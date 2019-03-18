@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TimerScript : MonoBehaviour
 {
     const int InitTimeSeconds = 30;
+    const int FrameRate = 50;
     [SerializeField]
     Text intText;
     [SerializeField]
@@ -18,7 +19,7 @@ public class TimerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        leftFrame = 60 * InitTimeSeconds;
+        leftFrame = FrameRate * InitTimeSeconds;
     }
 
     public void GameStart()
@@ -32,14 +33,14 @@ public class TimerScript : MonoBehaviour
             if (milsec < 100) return $".0{milsec}";
             return $".{milsec}";
         }
-        leftSeconds = leftFrame / 60;
-        leftMilsec = (int)((leftFrame % 60) * (1.0 / 60) * 1000);
+        leftSeconds = leftFrame / FrameRate;
+        leftMilsec = (int)((leftFrame % FrameRate) * (1.0 / FrameRate) * 1000);
         intText.text = leftSeconds.ToString();
         floatText.text = GetTimeDisp(leftMilsec);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         void UpdateTime(){
             void CheckEnd(){
@@ -58,7 +59,7 @@ public class TimerScript : MonoBehaviour
     }
 
     public void AddTime(int sec){
-        leftFrame += sec * 60;
+        leftFrame += sec * FrameRate;
     }
 
     private void OnEnd(){
