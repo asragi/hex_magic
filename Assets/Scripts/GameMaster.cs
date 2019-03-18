@@ -35,6 +35,6 @@ public class GameMaster : MonoBehaviour
 
     public void AddTime()
     {
-        timer.AddTime(10);
+        timer.AddTime(20);
     }
 }

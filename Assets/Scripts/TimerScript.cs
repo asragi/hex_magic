@@ -11,6 +11,10 @@ public class TimerScript : MonoBehaviour
     Text intText;
     [SerializeField]
     Text floatText;
+    [SerializeField]
+    TimePlusDisp timePlus;
+    [SerializeField]
+    ParticleSystem particle;
     public bool Started {get; set;}
     int leftFrame;
     int leftSeconds;
@@ -60,6 +64,8 @@ public class TimerScript : MonoBehaviour
 
     public void AddTime(int sec){
         leftFrame += sec * FrameRate;
+        timePlus.Pop(sec);
+        particle.Play();
     }
 
     private void OnEnd(){

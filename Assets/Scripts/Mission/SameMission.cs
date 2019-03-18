@@ -6,7 +6,7 @@ public class SameMission : MissionBase
 {
     int nowNorm;
     public override void DecideMission(int lv){
-        nowNorm = lv + 4;
+        nowNorm = (lv + 1) / 2 + 4;
     }
 
     public override string GetText(){

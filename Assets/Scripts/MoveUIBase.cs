@@ -7,7 +7,7 @@ public abstract class MoveUIBase : MonoBehaviour
     protected abstract int AnimationFrame { get; }
     protected abstract int DurationAfterAnimation { get; }
     protected abstract Vector3 PositionDiff { get; }
-    protected abstract Color[] AlphaColors { get; set; }
+    protected abstract Color AlphaColor { get; set; }
 
     Vector3 initPos;
     int animFrame;
@@ -19,7 +19,7 @@ public abstract class MoveUIBase : MonoBehaviour
     }
 
     // Update is called once per frame
-    protected void Update()
+    protected virtual void Update()
     {
         void UpdatePos(int frame, int endFrame, Vector3 initialPos, Transform target, Vector3 posDiff)
         {
@@ -51,11 +51,9 @@ public abstract class MoveUIBase : MonoBehaviour
 
         animFrame++;
         UpdatePos(animFrame, AnimationFrame, initPos, transform, PositionDiff);
-        for (int i = 0; i < AlphaColors.Length; i++)
-        {
-            AlphaColors[i] = UpdateColor(AlphaColors[i]);
-        }
+        AlphaColor = UpdateColor(AlphaColor);
     }
 
+    public void PopUp() => animFrame = 0;
     protected abstract float Func(int frame, int totalFrame);
 }

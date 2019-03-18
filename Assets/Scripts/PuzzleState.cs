@@ -1,5 +1,6 @@
 ﻿public enum PuzzleState {
     Opening,
     Play,
-    Effect
+    Effect,
+    End
 }
