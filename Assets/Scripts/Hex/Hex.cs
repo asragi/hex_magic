@@ -8,6 +8,8 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
 {
     [SerializeField]
     ParticleSystem particle;
+    [SerializeField]
+    ParticleSystem vanishParticle;
     Animator anim;
     HexMaster master;
     public RPoint Point { get; set; }
@@ -25,8 +27,12 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
     public bool vanish;
     public bool Vanished {
         get => vanish;
-        set { vanish = value; anim.SetBool("Vanishing", value); }
-    } // 2つ以上前の連鎖で消えたもの
+        set {
+            if (!value && (vanish != value)) vanishParticle.Play();
+            vanish = value;
+            anim.SetBool("Vanishing", value);
+        }
+    }
     public bool ReactContact;
 
     // Start is called before the first frame update
