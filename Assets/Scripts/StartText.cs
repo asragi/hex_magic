@@ -9,9 +9,9 @@ public class StartText : MoveUIBase
     GameMaster master;
     Text text;
     int frame;
-    readonly Vector3 moveDiff = new Vector3(2000, 0, 0);
-    protected override int AnimationFrame => 90;
-    protected override int DurationAfterAnimation => 30;
+    readonly Vector3 moveDiff = new Vector3(1200, 0, 0);
+    protected override int AnimationFrame => 60;
+    protected override int DurationAfterAnimation => 10;
     protected override Vector3 PositionDiff => moveDiff;
     protected override Color AlphaColor { get => text.color; set => text.color = value; }
 
@@ -32,7 +32,7 @@ public class StartText : MoveUIBase
 
     protected override float Func(int frame, int totalFrame)
     {
-        int duration = frame / totalFrame;
+        int duration = totalFrame / 3;
         if (frame >= totalFrame) return 1;
         if (frame < duration)
         {
@@ -40,7 +40,7 @@ public class StartText : MoveUIBase
         }
         if (frame >= totalFrame - duration)
         {
-            return ((float)frame / duration) - totalFrame + 1;
+            return ((float)frame / duration) - 3 + 1;
         }
         return 0;
     }
