@@ -8,7 +8,7 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
 {
     [SerializeField]
     ParticleSystem particle;
-
+    Animator anim;
     HexMaster master;
     public RPoint Point { get; set; }
     Hex[] contacted;
@@ -22,7 +22,11 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
     public int ID {get; set;}
     Hex2Img hex2Img;
     public bool Vanishing {get; set;} // 前の連鎖で消えたもの
-    public bool Vanished {get; set;} // 2つ以上前の連鎖で消えたもの
+    public bool vanish;
+    public bool Vanished {
+        get => vanish;
+        set { vanish = value; anim.SetBool("Vanishing", value); }
+    } // 2つ以上前の連鎖で消えたもの
     public bool ReactContact;
 
     // Start is called before the first frame update
@@ -32,6 +36,7 @@ public class Hex : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
         image = GetComponent<Image>();
         image.alphaHitTestMinimumThreshold = 0.5f;
         hex2Img = GetComponent<Hex2Img>();
+        anim = GetComponent<Animator>();
     }
 
     public void StartCountCheck(){
