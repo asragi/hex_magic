@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TimerScript : MonoBehaviour
 {
-    const int InitTimeSeconds = 100;
+    const int InitTimeSeconds = 30;
     [SerializeField]
     Text intText;
     [SerializeField]
@@ -51,6 +51,10 @@ public class TimerScript : MonoBehaviour
             UpdateTimeDisplay();
         }
         UpdateTime();
+    }
+
+    public void AddTime(int sec){
+        leftFrame += sec * 60;
     }
 
     private void OnEnd(){
