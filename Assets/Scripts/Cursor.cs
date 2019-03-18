@@ -30,6 +30,11 @@ public class Cursor : MonoBehaviour
         transform.position = tmp;
     }
 
+    public void Disable(){
+        nextBase.SetActive(false);
+        nextSub.SetActive(false);
+    }
+
     public void SetImages(HexColorPair pair){
         mainImg.ChangeImage(pair.Main);
         subImg.ChangeImage(pair.Sub);

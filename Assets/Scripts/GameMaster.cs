@@ -12,6 +12,10 @@ public class GameMaster : MonoBehaviour
     ScaleTransition trans;
     [SerializeField]
     StartText startText;
+    [SerializeField]
+    Cursor cursor;
+    [SerializeField]
+    EndModal endModal;
 
     public PuzzleState PuzzleState {get; set;}
     Score score;
@@ -26,6 +30,7 @@ public class GameMaster : MonoBehaviour
         if (timer.End){
             PuzzleState = PuzzleState.End;
             startText.OnEnd();
+            cursor.Disable();
         }
     }
 
@@ -36,7 +41,7 @@ public class GameMaster : MonoBehaviour
     }
 
     public void DisplayEndModal(){
-
+        endModal.gameObject.SetActive(true);
     }
 
     public int AddScore(int deleteNum, int chainNum){
