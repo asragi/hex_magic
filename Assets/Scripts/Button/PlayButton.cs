@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PlayButton : ButtonPointerBase
 {
+    [SerializeField]
+    ScaleTransition trans;
     Animator anim;
+    public string SceneName = "";
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -28,6 +32,6 @@ public class PlayButton : ButtonPointerBase
 
     public override void OnPointerClick(PointerEventData eventData)
     {
-        
+        trans.Enlarge(SceneManager.LoadScene, SceneName);
     }
 }
