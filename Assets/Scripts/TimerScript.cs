@@ -25,6 +25,7 @@ public class TimerScript : MonoBehaviour
     void Start()
     {
         leftFrame = FrameRate * InitTimeSeconds;
+        UpdateTimeDisplay();
     }
 
     public void GameStart()
