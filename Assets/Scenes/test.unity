@@ -7422,7 +7422,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 307606674}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1275591893
+--- !u!114 &1275591897
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7434,6 +7434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12ff40e489a2a43f0822ce95ad7b71b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  master: {fileID: 2063926317}
 --- !u!1 &1324905375
 GameObject:
   m_ObjectHideFlags: 0
@@ -8149,6 +8150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a8bc599c79eb4e14a03cddbc8d4a201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 773993955}
 --- !u!1 &1741319754
 GameObject:
   m_ObjectHideFlags: 0

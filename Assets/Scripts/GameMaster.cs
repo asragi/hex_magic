@@ -19,6 +19,7 @@ public class GameMaster : MonoBehaviour
 
     public PuzzleState PuzzleState {get; set;}
     Score score;
+    public int Score => score.Val;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +43,7 @@ public class GameMaster : MonoBehaviour
 
     public void DisplayEndModal(){
         endModal.gameObject.SetActive(true);
+        endModal.SetScore(Score);
     }
 
     public int AddScore(int deleteNum, int chainNum){

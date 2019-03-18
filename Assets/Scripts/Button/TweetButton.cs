@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class TweetButton : ButtonPointerBase
 {
+    [SerializeField]
+    GameMaster master;
     Animator anim;
     RTweet tw;
     TwiMessageGen gen;
     string message = "";
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -34,6 +37,6 @@ public class TweetButton : ButtonPointerBase
 
     public override void OnPointerClick(PointerEventData eventData)
     {
-        tw.Tweet(gen.GetMessage(10000));
+        tw.Tweet(gen.GetMessage(master.Score));
     }
 }
