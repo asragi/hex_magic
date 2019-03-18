@@ -37,6 +37,9 @@ public class ScaleTransition : MonoBehaviour
         if (frame >= TransitionFrame)
         {
             ActionOnEnd(actionOnEnd, scene);
+            enlarge = false;
+            shrink = false;
+            return;
         }
         if (enlarge)
         {
