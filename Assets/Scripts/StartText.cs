@@ -9,6 +9,8 @@ public class StartText : MoveUIBase
     GameMaster master;
     Text text;
     int frame;
+    bool end;
+    bool started;
     readonly Vector3 moveDiff = new Vector3(1200, 0, 0);
     protected override int AnimationFrame => 60;
     protected override int DurationAfterAnimation => 10;
@@ -26,8 +28,20 @@ public class StartText : MoveUIBase
     protected override void Update()
     {
         frame++;
-        if (frame > AnimationFrame + DurationAfterAnimation) master.GameStart();
+        if (!started && !end && frame > AnimationFrame + DurationAfterAnimation){
+            master.GameStart();
+            started = true;
+        }
+        if (end && frame > AnimationFrame + DurationAfterAnimation) master.DisplayEndModal();
         base.Update();
+    }
+
+    public void OnEnd(){
+        if(end) return;
+        text.text = "FINISH";
+        frame = 0;
+        end = true;
+        PopUp();
     }
 
     protected override float Func(int frame, int totalFrame)

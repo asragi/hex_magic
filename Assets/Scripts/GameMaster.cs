@@ -10,6 +10,8 @@ public class GameMaster : MonoBehaviour
     TimerScript timer;
     [SerializeField]
     ScaleTransition trans;
+    [SerializeField]
+    StartText startText;
 
     public PuzzleState PuzzleState {get; set;}
     Score score;
@@ -20,10 +22,21 @@ public class GameMaster : MonoBehaviour
         score = new Score();
     }
 
+    void Update(){
+        if (timer.End){
+            PuzzleState = PuzzleState.End;
+            startText.OnEnd();
+        }
+    }
+
     public void GameStart()
     {
         timer.GameStart();
         PuzzleState = PuzzleState.Play;
+    }
+
+    public void DisplayEndModal(){
+
     }
 
     public int AddScore(int deleteNum, int chainNum){

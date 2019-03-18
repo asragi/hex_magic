@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TimerScript : MonoBehaviour
 {
-    const int InitTimeSeconds = 30;
+    const int InitTimeSeconds = 2;
     const int FrameRate = 50;
     [SerializeField]
     Text intText;
@@ -20,6 +20,7 @@ public class TimerScript : MonoBehaviour
     int leftSeconds;
     int leftMilsec;
     bool stopped;
+    public bool End {get; private set;}
 
     // Start is called before the first frame update
     void Start()
@@ -74,6 +75,6 @@ public class TimerScript : MonoBehaviour
     }
 
     private void OnEnd(){
-
+        End = true;
     }
 }

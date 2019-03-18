@@ -7858,6 +7858,7 @@ MonoBehaviour:
   scoreBoard: {fileID: 50740412}
   timer: {fileID: 1886775853}
   trans: {fileID: 335326396}
+  startText: {fileID: 2106855506}
 --- !u!1 &2106855501
 GameObject:
   m_ObjectHideFlags: 0
