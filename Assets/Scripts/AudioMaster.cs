@@ -6,17 +6,16 @@ public class AudioMaster : MonoBehaviour
 {
     [SerializeField]
     AudioSource[] sources;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    AudioSource vanish;
+    [SerializeField]
+    AudioSource clear;
+    [SerializeField]
+    AudioSource place;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public void PlayVanish() => vanish.Play();
+    public void PlayClear() => clear.Play();
+    public void PlayPlace() => place.Play();
 
     public void PlayChainSE(int chainNum)
     {

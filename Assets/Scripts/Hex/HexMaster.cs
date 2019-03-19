@@ -26,6 +26,10 @@ public class HexMaster: MonoBehaviour
     [SerializeField]
     MissionBoardMaster missionBoardMaster;
 
+    // Audio
+    [SerializeField]
+    AudioMaster audioMaster;
+
     private void Start()
     {
         var center = Vector3.zero;
@@ -103,6 +107,7 @@ public class HexMaster: MonoBehaviour
         target.SetHex(deck.NowPair.Main);
         targetSub.SetHex(deck.NowPair.Sub);
         deck.Pop();
+        audioMaster.PlayPlace();
         // Chain Check
         ChainNum = 1;
         ContactCheck();
@@ -148,13 +153,18 @@ public class HexMaster: MonoBehaviour
             ChainNum++;
             var scoreStruct = new ScoreStruct(vanishingSum, ChainNum - 1, addScore);
             var cleard = missionBoardMaster.MissionCheck(scoreStruct);
-            if (cleard) gameMaster.AddTime();
+            if (cleard)
+            {
+                gameMaster.AddTime();
+                audioMaster.PlayClear();
+            }
             perform.InitWait();
             gameMaster.PuzzleState = PuzzleState.Effect;
             gameMaster.StopTimer();
         }else{
             // Chain end
             // Elase Vanished Panel
+            var shouldPlaySound = false;
             for (int i = 0; i < hices.Length; i++)
             {
                 if (hices[i].HexColor == HexColor.None) continue;
@@ -162,8 +172,10 @@ public class HexMaster: MonoBehaviour
                 if (!hices[i].Vanished) continue;
                 hices[i].Vanished = false;
                 hices[i].SetHex(HexColor.None);
+                shouldPlaySound = true;
             }
             gameMaster.PuzzleState = PuzzleState.Play;
+            if(shouldPlaySound) audioMaster.PlayVanish();
             gameMaster.StartTimer();
         }
     }
