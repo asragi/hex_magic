@@ -16,6 +16,8 @@ public class GameMaster : MonoBehaviour
     Cursor cursor;
     [SerializeField]
     EndModal endModal;
+    [SerializeField]
+    AudioMaster audioMaster;
 
     public PuzzleState PuzzleState {get; set;}
     Score score;
@@ -49,6 +51,7 @@ public class GameMaster : MonoBehaviour
     public int AddScore(int deleteNum, int chainNum){
         var val = score.AddScore(deleteNum, chainNum);
         scoreBoard.SetScore(score.Val);
+        audioMaster.PlayChainSE(chainNum);
         return val;
     }
 
